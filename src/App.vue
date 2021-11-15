@@ -1,0 +1,327 @@
+<template lang="pug">
+.home-container
+  .info-box
+    .info-box-title
+      | {{ hovered.text }}
+    .info-box-content
+      .info-box-resource(v-for="resource in hovered.resources")
+        img.miniaturized-resource(
+          :src="imageUrl(resource.img)"
+        )
+        | {{ resource.amount }}
+    //- p {{ hovered }}
+  .selected-box
+    .selected-box-image
+      img.selected-box-image(:src="imageUrl(selected.img)")
+    .selected-box-title
+      | {{ selected.text }}
+    .selected-box-content
+      .selected-box-resource(v-for="resource in selected.resources")
+        img.miniaturized-resource(
+          :src="imageUrl(resource.img)"
+        )
+        | {{ resource.amount }}
+  .home-header
+    h1 Home
+    h2 Welcome to the home page
+  .fields
+    .row-field(v-for="row in fields")
+      .col-field(v-for="col in row")
+        .field-container(
+          @mouseover="hoverField(col)"
+          @click="selectField(col)"
+        )
+</template>
+
+<script setup>
+
+import { onMounted, ref, computed } from 'vue'
+
+const fields = ref([])
+const hovered = ref({})
+const selected = ref({})
+
+const fieldTypes = [
+  {
+    type: 'wild',
+    text: 'Terreno Selvagem',
+    img: 'forest',
+    production: {
+      status: false,
+      complete: ''
+    },
+    options: [
+      {
+        name: 'extract',
+        text: 'Extrair um tipo de recurso',
+        action: 'extract-resource',
+        target: 'resource',
+        conditions: [
+          {
+            name: 'production',
+            value: false
+          }
+        ]
+      },
+      {
+        name: 'clean',
+        text: 'Limpar o terreno',
+        action: 'change-field-type',
+        target: 'cleared',
+        conditions: [
+          {
+            name: 'production',
+            value: false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    type: 'cleared',
+    text: 'Terreno Limpo',
+    img: 'cleared',
+    production: {
+      status: false,
+      complete: ''
+    },
+    options: [
+      {
+        name: 'extract',
+      }
+    ]
+  },
+  {
+    type: 'farming',
+    text: 'Plantação',
+    production: {
+      status: false,
+      complete: ''
+    }
+  },
+  {
+    type: 'equipment',
+    text: 'Equipamento',
+    production: {
+      status: false,
+      complete: ''
+    }
+  },
+  {
+    type: 'mining',
+    text: 'Mineração',
+    production: {
+      status: false,
+      complete: ''
+    },
+    floor: {
+      max: 120,
+      current: 0
+    }
+  },
+  {
+    type: 'storage',
+    text: 'Armazenamento',
+    floor: {
+      max: 60,
+      current: 1
+    }
+  }
+]
+
+const resourceTypes = [
+  {
+    name: 'wood',
+    text: 'Madeira',
+    img: 'wood',
+  },
+  {
+    name: 'stone',
+    text: 'Pedra',
+    img: 'stone',
+  },
+  {
+    name: 'grass',
+    text: 'Grass',
+    img: 'grass',
+  },
+  {
+    name: 'leaves',
+    text: 'Folhas',
+    img: 'leaves',
+  },
+  {
+    name: 'water',
+    text: 'Água',
+    img: 'water',
+  },
+  {
+    name: 'dirt',
+    text: 'Terra',
+    img: 'soil',
+  }
+]
+
+const vehicleTypes = [] 
+
+const initialWildFields = () => {
+  const resources = () => {
+    return new Array(Math.floor(Math.random() * 10)).fill(0).map(() => {
+      return {
+        ...resourceTypes[Math.floor(Math.random() * resourceTypes.length)],
+        amount: Math.floor(Math.random() * 10)
+      }
+    })
+  }
+
+  return {
+    ...fieldTypes[fieldTypes.findIndex(type => type.type === 'wild')],
+    resources: resources(),
+  }
+}
+
+const hoverField = field => {
+  hovered.value = field
+}
+
+const selectField = field => {
+  selected.value = field
+}
+
+const imageUrl = img => {
+  return `/img/${img}.png`
+}
+
+onMounted(() => {
+  fields.value = new Array(10).fill(0).map(() => new Array(10).fill(initialWildFields()))
+})
+
+</script>
+
+<style lang="sass">
+
+@import url('https://fonts.googleapis.com/css2?family=Yuji+Boku&display=swap')
+
+*
+  padding: 0
+  margin: 0
+
+html, body
+  min-height: 100vh
+
+.home-container
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  min-height: 100vh
+
+.fields
+  // width: 800px
+  // height: 800px
+  background-color: #eee
+  transform: translate(0, 0) rotateX(60deg) rotateY(0) rotateZ(45deg)
+
+.row-field
+  width: 100%
+  display: flex
+  transform-style: preserve-3d
+
+.col-field
+  width: 76px
+  height: 76px
+  background-color: #ccc
+  border: 2px solid #999
+  transform-style: preserve-3d
+
+.field-container
+  position: relative
+  width: 100%
+  height: 100%
+  transform-style: preserve-3d
+
+  &:hover
+    background-color: #ddd
+
+.info-box
+  position: fixed
+  top: 0
+  left: 0
+  width: 300px
+  height: 150px
+  border-radius: 0 0 10px 0
+  
+  background-color: rgba(0, 0, 0, .7)
+
+.info-box-title
+  color: #fff
+  font-size: 1.5em
+  text-align: center
+  padding: 10px
+  font-family: 'Yuji Boku', serif
+
+
+.info-box-content
+  display: flex
+  flex-wrap: wrap
+
+.info-box-resource
+  margin: 5px
+  padding: 5px
+  border: 1px solid #fff
+  border-radius: 9999px
+  min-width: 20px
+  min-height: 20px
+  background-color: #fff
+  text-align: center
+  font-family: sans-serif
+  font-size: 1.2rem
+  font-weight: bold
+
+.miniaturized-resource
+  width: 20px
+  height: 20px
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
+  border-radius: 50%
+  margin-right: 5px
+
+.selected-box
+  position: fixed
+  top: 0
+  right: 0
+  width: 300px
+  // height: 150px
+  border-radius: 0 0 0 10px
+
+  background-color: rgba(50, 100, 50, .7)
+
+  z-index: 10
+
+.selected-box-image
+  width: 50%
+  margin: 0 auto
+  text-align: center
+
+.selected-box-title
+  color: #fff
+  font-size: 1.5em
+  text-align: center
+  padding: 10px
+  font-family: 'Yuji Boku', serif
+
+.selected-box-content
+  display: flex
+  flex-wrap: wrap
+
+.selected-box-resource
+  margin: 5px
+  padding: 5px
+  border: 1px solid #fff
+  border-radius: 9999px
+  min-width: 20px
+
+  background-color: #fff
+
+</style>
