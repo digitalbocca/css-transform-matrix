@@ -3,6 +3,7 @@
 .home-container
   info-box
   selected-box
+  controls
   .fields(@mouseleave="cleanHovered()")
     .row-field(v-for="row in fields")
       .col-field(v-for="col in row")
@@ -22,6 +23,7 @@ import imageUrl from '../functions/image-url'
 
 import InfoBox from '../components/info-box.vue'
 import SelectedBox from '../components/selected-box.vue'
+import Controls from '../components/controls.vue'
 
 const store = useStore()
 
