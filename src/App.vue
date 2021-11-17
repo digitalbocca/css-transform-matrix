@@ -1,6 +1,6 @@
 <template lang="pug">
 .home-container
-  .info-box
+  .info-box(v-if="Object.keys(hovered).length")
     .info-box-title
       | {{ hovered.text }}
     .info-box-content
@@ -9,8 +9,7 @@
           :src="imageUrl(resource.img)"
         )
         | {{ resource.amount }}
-    //- p {{ hovered }}
-  .selected-box
+  .selected-box(v-if="Object.keys(selected).length")
     .selected-box-image
       img.selected-box-image(:src="imageUrl(selected.img)")
     .selected-box-title
@@ -21,10 +20,7 @@
           :src="imageUrl(resource.img)"
         )
         | {{ resource.amount }}
-  .home-header
-    h1 Home
-    h2 Welcome to the home page
-  .fields
+  .fields(@mouseleave="cleanHovered()")
     .row-field(v-for="row in fields")
       .col-field(v-for="col in row")
         .field-container(
@@ -182,6 +178,10 @@ const initialWildFields = () => {
 
 const hoverField = field => {
   hovered.value = field
+}
+
+const cleanHovered = () => {
+  hovered.value = {}
 }
 
 const selectField = field => {
