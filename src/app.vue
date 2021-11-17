@@ -41,7 +41,7 @@ onMounted(() => {
 
 <style lang="sass">
 
-@import url('https://fonts.googleapis.com/css2?family=Yuji+Boku&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Yuji+Boku&display=swap')
 
 *
   padding: 0
