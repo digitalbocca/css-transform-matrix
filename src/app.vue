@@ -32,15 +32,22 @@
 <script setup>
 
 import { onMounted, ref, computed } from 'vue'
+import { useStore } from 'vuex'
 
 import fieldTypes from './entities/fields'
 import resourceTypes from './entities/resources'
 
-const fields = ref([])
-const hovered = ref({})
-const selected = ref({})
+const store = useStore()
 
-const vehicleTypes = [] 
+const fields = computed(() => store.getters.fields)
+const hovered = computed(() => store.getters.hovered)
+const selected = computed(() => store.getters.selected)
+
+const setupFields = fields => store.dispatch('setupFields', fields)
+
+const hoverField = field => store.dispatch('hoverField', field)
+const selectField = field => store.dispatch('selectField', field)
+const cleanHovered = () => store.dispatch('cleanHovered')
 
 const initialWildFields = () => {
   const resources = () => {
@@ -58,24 +65,13 @@ const initialWildFields = () => {
   }
 }
 
-const hoverField = field => {
-  hovered.value = field
-}
-
-const cleanHovered = () => {
-  hovered.value = {}
-}
-
-const selectField = field => {
-  selected.value = field
-}
-
 const imageUrl = img => {
   return `/img/${img}.png`
 }
 
 onMounted(() => {
-  fields.value = new Array(10).fill(0).map(() => new Array(10).fill(initialWildFields()))
+  // fields.value = new Array(10).fill(0).map(() => new Array(10).fill(initialWildFields()))
+  setupFields(new Array(10).fill(0).map(() => new Array(10).fill(initialWildFields())))
 })
 
 </script>
