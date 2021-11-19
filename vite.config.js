@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     vue()
   ],
-  base: '/css-transform-matrix/',
+  base: 'https://digitalbocca.github.io/css-transform-matrix/',
   build: {
     outDir: 'docs'
   }
