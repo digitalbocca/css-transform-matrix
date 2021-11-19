@@ -5,7 +5,7 @@
     Girando uma matriz com css transform e mágica.
   </h4>
   <p align="center">
-    <img src="https://badgen.net/badge/version/v0.13.2/orange">
+    <img src="https://badgen.net/badge/version/v0.13.3/orange">
   </p>
   <p align="center">
     <img src="https://forthebadge.com/images/badges/made-with-vue.svg">
