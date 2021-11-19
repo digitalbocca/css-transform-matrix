@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     vue()
   ],
-  base: './',
+  base: '/css-transform-matrix/',
   build: {
     outDir: 'docs'
   }

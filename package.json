@@ -1,6 +1,6 @@
 {
   "name": "css-transform-matrix",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
