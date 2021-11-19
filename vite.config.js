@@ -8,6 +8,6 @@ export default defineConfig({
   ],
   build: {
     outDir: 'docs',
-    publicPath: '/'
+    publicPath: ''
   }
 })
