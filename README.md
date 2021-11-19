@@ -1,7 +1,35 @@
-# Vue 3 + Vite
+<p align="center">
+  <img src="https://estudiodigitalbocca.com.br/edb-logo.svg" width="200px">
+  <h1 align="center">css-transform-matrix</h1>
+  <h4 align="center">
+    Girando uma matriz com css transform e mágica.
+  </h4>
+  <p align="center">
+    <img src="https://badgen.net/badge/version/v0.11.0/orange">
+  </p>
+  <p align="center">
+    <img src="https://forthebadge.com/images/badges/made-with-vue.svg">
+    <br>
+    <img src="https://forthebadge.com/images/badges/works-on-my-machine.svg">
+    <br>
+    <img src="https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg">
+  </p>
+  <p align="center">(c)2021 - Estúdio Digital Bocca</p>
+</p>
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+---
 
-## Recommended IDE Setup
+# README - CSS-TRANSFORM-MATRIX
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+---
+
+## Live Preview
+
+- Em breve...
+
+## Local Development
+
+```bash
+npm i
+npm run dev
+```
