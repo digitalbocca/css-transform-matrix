@@ -5,7 +5,7 @@
     Girando uma matriz com css transform e mágica.
   </h4>
   <p align="center">
-    <img src="https://badgen.net/badge/version/v0.12.0/orange">
+    <img src="https://badgen.net/badge/version/v0.13.0/orange">
   </p>
   <p align="center">
     <img src="https://forthebadge.com/images/badges/made-with-vue.svg">
@@ -25,7 +25,7 @@
 
 ## Live Preview
 
-- Em breve...
+- https://digitalbocca.github.io/css-transform-matrix/
 
 ## Local Development
 
