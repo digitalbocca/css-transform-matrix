@@ -8,30 +8,7 @@ const fieldTypes = [
       complete: ''
     },
     options: [
-      {
-        name: 'extract',
-        text: 'Extrair um tipo de recurso',
-        action: 'extract-resource',
-        target: 'resource',
-        conditions: [
-          {
-            name: 'production',
-            value: false
-          }
-        ]
-      },
-      {
-        name: 'clean',
-        text: 'Limpar o terreno',
-        action: 'change-field-type',
-        target: 'cleared',
-        conditions: [
-          {
-            name: 'production',
-            value: false
-          }
-        ]
-      }
+      'clean'
     ]
   },
   {
@@ -42,11 +19,7 @@ const fieldTypes = [
       status: false,
       complete: ''
     },
-    options: [
-      {
-        name: 'extract',
-      }
-    ]
+    options: []
   },
   {
     type: 'farming',
@@ -54,7 +27,8 @@ const fieldTypes = [
     production: {
       status: false,
       complete: ''
-    }
+    },
+    options: []
   },
   {
     type: 'equipment',
@@ -62,7 +36,8 @@ const fieldTypes = [
     production: {
       status: false,
       complete: ''
-    }
+    },
+    options: []
   },
   {
     type: 'mining',
@@ -71,6 +46,7 @@ const fieldTypes = [
       status: false,
       complete: ''
     },
+    options: [],
     floor: {
       max: 120,
       current: 0
@@ -82,7 +58,8 @@ const fieldTypes = [
     floor: {
       max: 60,
       current: 1
-    }
+    },
+    options: []
   }
 ]
 
