@@ -69,6 +69,9 @@ const selectField = field => store.dispatch('selectField', field)
   height: 100%
   transform-style: preserve-3d
 
+  &-selected
+    background-color: pink
+
   &:hover
     background-color: #ddd
 

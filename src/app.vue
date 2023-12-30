@@ -34,7 +34,7 @@ const initialWildFields = () => {
 
 
 onMounted(() => {
-  setupFields(new Array(10).fill(0).map(() => new Array(10).fill(initialWildFields())))
+  setupFields(new Array(10).fill(0).map(() => new Array(10).fill(0).map(() => initialWildFields())))
 })
 
 </script>
