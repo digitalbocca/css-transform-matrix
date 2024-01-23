@@ -5,7 +5,7 @@
     Girando uma matriz com css transform e mágica.
   </h4>
   <p align="center">
-    <img src="https://badgen.net/badge/version/v0.13.4/orange">
+    <img src="https://badgen.net/badge/version/v0.13.6/orange">
   </p>
   <p align="center">
     <img src="https://forthebadge.com/images/badges/made-with-vue.svg">
@@ -14,7 +14,7 @@
     <br>
     <img src="https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg">
   </p>
-  <p align="center">(c)2021 - Estúdio Digital Bocca</p>
+  <p align="center">(c)2021-2024 Estúdio Digital Bocca</p>
 </p>
 
 ---
